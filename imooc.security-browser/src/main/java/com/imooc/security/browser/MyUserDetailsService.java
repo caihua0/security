@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-
+//让这个类变成一个bean
 @Component
 public class MyUserDetailsService implements UserDetailsService{
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -23,7 +23,7 @@ public class MyUserDetailsService implements UserDetailsService{
 		// TODO Auto-generated method stub
 		// 查找用户信息
 		logger.info("登录用户名:{}",username);
-		String encode = passwordEncoder.encode("123456");
+		String encode = passwordEncoder.encode("123456");//从数据库读取密码
 		logger.info("密码是:{}",encode);
 		return new User(username, encode , AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
 	}
